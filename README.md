@@ -35,3 +35,7 @@ Console: `ncl.test` (a deliberate, caught fault - to see a report), `ncl.where <
 0.1.0 tested in game (TEST-RESULT-0.1.0.txt). Its first test found a Norse Address Library bug - functions another mod
 had hooked could not be resolved by a later mod - fixed in the library the same night. Not yet: a real crash (the game
 dying) seen through it.
+
+## Licence
+
+GPL-3.0-or-later (see LICENSE).
