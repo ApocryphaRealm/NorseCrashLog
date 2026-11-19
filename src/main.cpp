@@ -246,6 +246,7 @@ class NorseCrashLog : public RC::CppUserModBase
         ModAuthors = L"ApocryphaRealm";
         g_mod = ModDir();
         std::wstring dir;
+        int logLevel = 2; // uLogLevel: 0 trace, 1 debug, 2 info, 3 warn, 4 error, 6 off
         {
             std::ifstream in(g_mod / "NorseCrashLog.ini");
             std::string line;
@@ -253,10 +254,11 @@ class NorseCrashLog : public RC::CppUserModBase
             {
                 if (!line.empty() && line.back() == '\r') line.pop_back();
                 if (line.rfind("sLogDir=", 0) == 0) dir = nm::Widen(line.substr(8));
+                if (line.rfind("uLogLevel=", 0) == 0) logLevel = atoi(line.c_str() + 10);
             }
         }
-        Log::Get().Open((dir.empty() ? g_mod : fs::path(dir)) / "NorseCrashLog.log", 2);
-        Log::Get().Write(Level::Error, "NorseCrashLog v%s - watching for faults", NCL_VERSION);
+        Log::Get().Open((dir.empty() ? g_mod : fs::path(dir)) / "NorseCrashLog.log", logLevel);
+        Log::Get().Write(Level::Error, "NorseCrashLog v%s - log level %d - watching for faults", NCL_VERSION, logLevel);
         AddVectoredExceptionHandler(1, &OnException);
     }
 

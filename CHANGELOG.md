@@ -3,6 +3,7 @@
 ## 1.0.0 - 2026-11-18 - working
 
 ### Added
+- uLogLevel in NorseCrashLog.ini: 2 = info (the default), 0 = everything for a bug report.
 - First release. It contains everything built and tested in 0.1.0, listed here and kept as history below:
 - Fault reports: module + function (our .pdb files), game functions by Norse Address Library ID, the stack, the last 20 NorseEvents events, the NorseManifest pack list.
 - Console ncl.test, ncl.where.
